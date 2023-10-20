@@ -1,0 +1,9 @@
+
+python -m venv env -> Crear el entorno virtual
+env\Scripts\activate -> Activar el entorno virtual
+deactivate -> desactivar el entorno virtual
+python -m django --version
+
+pip install django
+pip install youtube-search==1.1.1
+pip install spotipy==2.16.1      

@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -9,9 +10,21 @@ import json
 # import cardupdate
 
 
-
 f = open('card.json', 'r')
 CONTAINER = json.load(f)
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # You can add a welcome message or redirection here
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
+
+
 
 def default(request):
     global CONTAINER

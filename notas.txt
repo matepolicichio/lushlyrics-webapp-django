@@ -1,4 +1,10 @@
 
+env\Scripts\activate : File C:\Users\epolmar\OneDrive - Ericsson\Desktop\Visual Studio 
+Code\django_projects\lushlyrics-webapp-django\env\Scripts\Activate.ps1 cannot be loaded because running scripts is disabled on this system.
+Open PowerShell as an Administrator
+Get-ExecutionPolicy
+Set-ExecutionPolicy RemoteSigned
+
 python -m venv env -> Crear el entorno virtual
 env\Scripts\activate -> Activar el entorno virtual
 deactivate -> desactivar el entorno virtual

@@ -24,25 +24,41 @@
     <div class="signup_body">
         <form class="login_form" method='POST' enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="login-username" class="label">
-                Email address or username
-            </label>
 
-            <input type="text" class="form_input" pattern="[A-Za-z0-9.@_-e]+" name="username"
-                placeholder="Email address or username" required>
-            <label for="login-username" class="label">
-                Password
-            </label>
-            <input type="password" class="form_input" name="password" placeholder="Password" required>
-            {% if not case %}
+            <label for="{{ form.username.id_for_label }}" class="label">Email address or username</label>
+
+            <input type="text" class="form_input" pattern="[A-Za-z0-9.@_-e]+" name="{{ form.username.name }}"
+                id="{{ form.username.id_for_label }}" placeholder="Email address or username" required>
+
+            {% for error in form.username.errors %}
+            <div class="error-message">{{ error }}</div>
+            {% endfor %}
+
+
+            <label for="{{ form.password.id_for_label }}" class="label">Password</label>
+
+            <input type="password" class="form_input" name="{{ form.password.name }}"
+                id="{{ form.password.id_for_label }}" placeholder="Password" required>
+
+            {% for error in form.password.errors %}
+            <div class="error-message">{{ error }}</div>
+            {% endfor %}
+
+            <!-- {% if not case %}
             <span style="color:#f79862;
                              padding-bottom:20px;
                              text-align:center;">Username or password invalid</span>
-            {% endif %}
+            {% endif %} -->
+
             <button class='btn btn_log_in' type="submit">Log in</button>
+
+            {% for error in form.non_field_errors %}
+            <div class="error-message">{{ error }}</div>
+            {% endfor %}
+
             <div class="divider"></div>
             <p class='label center-align'>Don't have an account?</p>
-            <a class='btn btn_sign_up' href="/signup">Sign Up for Lushlyrics</a>
+            <a class='btn btn_sign_up' href="/accounts/signup">Sign Up for Lushlyrics</a>
         </form>
     </div>
 

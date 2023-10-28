@@ -7,5 +7,4 @@ urlpatterns = [
     path("", views.default, name='default'),
     path("playlist/", views.playlist, name='your_playlists'),
     path("search/", views.search, name='search_page'),
-    path('register/', views.register, name='register')
 ]
